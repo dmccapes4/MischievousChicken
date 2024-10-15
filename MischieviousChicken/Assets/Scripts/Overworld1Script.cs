@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Overworld1Script : MonoBehaviour
 {
+    public GameObject tutorialButton;
+    
     // Reference to the Level1 button
     public GameObject level1Button;
 
@@ -16,6 +18,8 @@ public class Overworld1Script : MonoBehaviour
 
     void Start()
     {
+        tutorialButton.GetComponent<Button>().onClick.AddListener(LoadTutorialLevel);
+        
         // Add a listener to the Level1 button
         level1Button.GetComponent<Button>().onClick.AddListener(LoadLevel1);
 
@@ -23,6 +27,13 @@ public class Overworld1Script : MonoBehaviour
         level2Button.GetComponent<Button>().onClick.AddListener(LoadLevel2);
 
         level3Button.GetComponent<Button>().onClick.AddListener(LoadLevel3);
+    }
+    
+    void LoadTutorialLevel()
+    {
+        print("Loading Level0");
+        // Load the Level3 scene
+        SceneManager.LoadScene("Level0");
     }
 
     // Method to load Level1 scene
