@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0;
     private const int maxJumps = 2;
 
+    // New variable to track if the player is on a slope
+    private bool isOnSlope = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,8 +23,20 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
+        // Maintain horizontal velocity if on slope
+        if (isOnSlope)
+        {
+            // Keep the current horizontal velocity
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+        }
+        else
+        {
+            // Update horizontal velocity based on input
+            rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+        }
+
+        // Flip the sprite based on input direction
         if (horizontalInput < 0)
         {
             spriteRenderer.flipX = true;
@@ -31,6 +46,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
+        // Handle jumping
         if (Input.GetButtonDown("Jump") && jumpCount < maxJumps)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -42,7 +58,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            jumpCount = 0;
+            jumpCount = 0;  // Reset jump count when touching the ground
+        }
+
+        // Check if the player is on a slope
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Slope"))
+        {
+            isOnSlope = true;
         }
     }
 
@@ -52,18 +74,26 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 collisionNormal = collision.contacts[0].normal;
 
+            // Reset horizontal velocity if colliding with ground
             if (Mathf.Abs(collisionNormal.x) > 0.1f)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
+
+        // Check if still on slope
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Slope"))
+        {
+            isOnSlope = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        // Reset slope status when exiting the slope
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
-            jumpCount = 0;
+            isOnSlope = false;
         }
     }
 }
