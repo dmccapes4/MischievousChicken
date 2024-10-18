@@ -6,7 +6,6 @@ public class SnakeMovement : MonoBehaviour
 {
     public float speed = 2.0f;
     public float movementRange = 5.0f;
-    public LayerMask collisionLayer;
 
     private float startX;
     private float snakeX;
@@ -21,15 +20,16 @@ public class SnakeMovement : MonoBehaviour
 
     void Update()
     {
-        if (!IsColliding(snakeDirection))
+        if (snakeX <= startX - movementRange)
         {
-            MoveSnake();
+            snakeDirection = "right";
         }
-        else
+        else if (snakeX >= startX + movementRange)
         {
-            ChangeDirection();
+            snakeDirection = "left";
         }
 
+        MoveSnake();
         transform.position = new Vector3(snakeX, transform.position.y, transform.position.z);
     }
 
@@ -53,20 +53,17 @@ public class SnakeMovement : MonoBehaviour
                 isFlipped = true;
             }
         }
-
-        snakeX = Mathf.Clamp(snakeX, startX - movementRange, startX + movementRange);
     }
 
-    void ChangeDirection()
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        FlipSnake();
+    }
+
+    void FlipSnake()
     {
         snakeDirection = (snakeDirection == "right") ? "left" : "right";
-    }
-
-    bool IsColliding(string direction)
-    {
-        Vector2 directionVector = direction == "right" ? Vector2.right : Vector2.left;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionVector, 0.1f, collisionLayer);
-        return hit.collider != null;
+        FlipSprite();
     }
 
     void FlipSprite()
@@ -74,5 +71,6 @@ public class SnakeMovement : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+        isFlipped = !isFlipped; // Update the flip state
     }
 }

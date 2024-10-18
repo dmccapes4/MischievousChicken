@@ -173,3 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   movementRange: 5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
