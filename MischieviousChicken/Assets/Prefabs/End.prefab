@@ -9,6 +9,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1193956194937525699, guid: 51be70d3403b3b6429b563ddd0492e96, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193956194937525699, guid: 51be70d3403b3b6429b563ddd0492e96, type: 3}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193956194937525699, guid: 51be70d3403b3b6429b563ddd0492e96, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 3.71
       objectReference: {fileID: 0}
@@ -22,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f3a0974d6f4038743875f970ec5612ff, type: 3}
     - target: {fileID: 5551100363772617602, guid: 51be70d3403b3b6429b563ddd0492e96, type: 3}
       propertyPath: m_Name
-      value: Platform (12) Variant
+      value: End
       objectReference: {fileID: 0}
     - target: {fileID: 5551100363772617602, guid: 51be70d3403b3b6429b563ddd0492e96, type: 3}
       propertyPath: m_TagString
