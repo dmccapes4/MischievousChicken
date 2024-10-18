@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private const int maxJumps = 2;
 
     // New variable to track if the player is on a slope
+    // Test comment for git sanity check
     private bool isOnSlope = false;
 
     void Start()
