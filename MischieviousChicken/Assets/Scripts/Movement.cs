@@ -4,49 +4,75 @@ using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
 {
-  public float speed = 2.0f;
-  public float movementRange = 5.0f; // new variable to define movement range
+    public float speed = 2.0f;
+    public float movementRange = 5.0f;
+    public LayerMask collisionLayer;
 
-  private float startX; // store the starting x position
-  private float snakeX;
-  private string snakeDirection = "right";
-  private bool isFlipped = false; // new variable to track sprite flip
+    private float startX;
+    private float snakeX;
+    private string snakeDirection = "right";
+    private bool isFlipped = false;
 
-  void Start()
-  {
-    startX = transform.position.x; // store the starting x position
-    snakeX = startX; // initialize snake's position
-  }
-
-  void Update()
-  {
-    if (snakeX <= startX - movementRange) {
-      snakeDirection = "right";
-    } else if (snakeX >= startX + movementRange) {
-      snakeDirection = "left";
+    void Start()
+    {
+        startX = transform.position.x;
+        snakeX = startX;
     }
 
-    if (snakeDirection == "right") {
-      snakeX += speed * Time.deltaTime;
-      if (isFlipped) {
-        FlipSprite(); // flip sprite back to original direction
-        isFlipped = false;
-      }
-    } else {
-      snakeX -= speed * Time.deltaTime;
-      if (!isFlipped) {
-        FlipSprite(); // flip sprite to face left
-        isFlipped = true;
-      }
+    void Update()
+    {
+        if (!IsColliding(snakeDirection))
+        {
+            MoveSnake();
+        }
+        else
+        {
+            ChangeDirection();
+        }
+
+        transform.position = new Vector3(snakeX, transform.position.y, transform.position.z);
     }
 
-    transform.position = new Vector3(snakeX, transform.position.y, transform.position.z);
-  }
+    void MoveSnake()
+    {
+        if (snakeDirection == "right")
+        {
+            snakeX += speed * Time.deltaTime;
+            if (isFlipped)
+            {
+                FlipSprite();
+                isFlipped = false;
+            }
+        }
+        else
+        {
+            snakeX -= speed * Time.deltaTime;
+            if (!isFlipped)
+            {
+                FlipSprite();
+                isFlipped = true;
+            }
+        }
 
-  void FlipSprite()
-  {
-    Vector3 scale = transform.localScale;
-    scale.x *= -1; // flip the sprite horizontally
-    transform.localScale = scale;
-  }
+        snakeX = Mathf.Clamp(snakeX, startX - movementRange, startX + movementRange);
+    }
+
+    void ChangeDirection()
+    {
+        snakeDirection = (snakeDirection == "right") ? "left" : "right";
+    }
+
+    bool IsColliding(string direction)
+    {
+        Vector2 directionVector = direction == "right" ? Vector2.right : Vector2.left;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionVector, 0.1f, collisionLayer);
+        return hit.collider != null;
+    }
+
+    void FlipSprite()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
 }

@@ -30,7 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 35cea06bbdc8bf046bac0a690730ddbb, type: 3}
     - target: {fileID: 5551100363772617602, guid: 51be70d3403b3b6429b563ddd0492e96, type: 3}
       propertyPath: m_Name
-      value: Crate (1) Variant
+      value: Crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551100363772617602, guid: 51be70d3403b3b6429b563ddd0492e96, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5551100363772617602, guid: 51be70d3403b3b6429b563ddd0492e96, type: 3}
       propertyPath: m_TagString
