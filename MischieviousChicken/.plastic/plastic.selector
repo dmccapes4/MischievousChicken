@@ -1,4 +1,0 @@
-repository "MischieviousChicken@subzerox334_unity@cloud"
-  path "/"
-    br "/main"
-    co "/main"
