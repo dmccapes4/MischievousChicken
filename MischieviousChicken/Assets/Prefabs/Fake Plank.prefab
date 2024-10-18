@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9121120954799946664}
   - component: {fileID: 4367712602950360432}
   - component: {fileID: 8704560805190733540}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fake Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
