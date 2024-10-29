@@ -1327,11 +1327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7739522451410038934, guid: 89c6606c9540fb443ae883132962cb8c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -14.508353
+      value: 20.96
       objectReference: {fileID: 0}
     - target: {fileID: 7739522451410038934, guid: 89c6606c9540fb443ae883132962cb8c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.5669448
+      value: 12.69
       objectReference: {fileID: 0}
     - target: {fileID: 7739522451410038934, guid: 89c6606c9540fb443ae883132962cb8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2573,6 +2573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 469761127520176383, guid: ec60b276d7bddae40b42ab63cee2a26f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 25938c0169a5c5e45af02b0afd794162, type: 2}
     - target: {fileID: 4983963245774626328, guid: ec60b276d7bddae40b42ab63cee2a26f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.3438
@@ -2613,6 +2617,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5960342161453185229, guid: ec60b276d7bddae40b42ab63cee2a26f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 25938c0169a5c5e45af02b0afd794162, type: 2}
     - target: {fileID: 8876803111803062433, guid: ec60b276d7bddae40b42ab63cee2a26f, type: 3}
       propertyPath: m_Name
       value: BouncyBlock
