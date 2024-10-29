@@ -32,7 +32,7 @@ public class Overworld1Script : MonoBehaviour
     void LoadTutorialLevel()
     {
         print("Loading Level0");
-        // Load the Level3 scene
+        // Load the Level0 scene
         SceneManager.LoadScene("Level0");
     }
 
