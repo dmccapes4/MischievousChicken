@@ -27,19 +27,7 @@ public class PlayerHandler : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Coin")
-        {
-            Destroy(collision.gameObject);
-            playerProgressScript.AddCoins(1); // Update the coins in the PlayerProgressScript
-            Debug.Log("Coin collected!");
-        }
-        else if (collision.gameObject.tag == "Key")
-        {
-            Destroy(collision.gameObject);
-            playerProgressScript.AddKeys(1); // Update the keys in the PlayerProgressScript
-            Debug.Log("Key collected!");
-        }
-        else if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("DEATH!");
             ResetPlayerProgress();
@@ -68,6 +56,22 @@ public class PlayerHandler : MonoBehaviour
             {
                 Debug.Log("You don't have a key to open the chest!");
             }
+        }
+    }
+    
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Coin")
+        {
+            Destroy(col.gameObject);
+            playerProgressScript.AddCoins(1); // Update the coins in the PlayerProgressScript
+            Debug.Log("Coin collected!");
+        }
+        else if (col.gameObject.tag == "Key")
+        {
+            Destroy(col.gameObject);
+            playerProgressScript.AddKeys(1); // Update the keys in the PlayerProgressScript
+            Debug.Log("Key collected!");
         }
     }
 
