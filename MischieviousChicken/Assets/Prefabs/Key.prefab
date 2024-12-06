@@ -262,7 +262,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2683125385021690051, guid: 33ad773b8a8dc0a45b1f75260e3775be, type: 3}
       propertyPath: m_Name
-      value: Key Variant
+      value: Key
       objectReference: {fileID: 0}
     - target: {fileID: 2683125385021690051, guid: 33ad773b8a8dc0a45b1f75260e3775be, type: 3}
       propertyPath: m_TagString
@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5328287252852596472, guid: 33ad773b8a8dc0a45b1f75260e3775be, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5988342578703846636, guid: 33ad773b8a8dc0a45b1f75260e3775be, type: 3}
       propertyPath: m_LocalPosition.x
