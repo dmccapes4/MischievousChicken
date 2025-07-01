@@ -4,6 +4,12 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 7.0f;
     public float jumpForce = 7.0f;
+    public float parallaxBackgroundSpeed = 0.1f;
+    public float parallaxMidgroundSpeed = 0.3f;
+    public float parallaxForegroundSpeed = 0.5f;
+    public GameObject ParralaxBackground;
+    public GameObject ParralaxMidground;
+    public GameObject ParralaxForground;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
